@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	
+	
+	
+	
+	<bean id="h1" class="com.ddargiratte.jan253.human.Human">
+		<property name="name" value="진아"></property>
+		<property name="age" value="25"></property>
+		<property name="nickname">		<!-- list 써서 여러개 닉네임 생성! (배열씀) -->
+			<list value-type="java.lang.String">	<!-- value-type: 자료형 보여주나 안보여주나! -->
+				<value>홍시</value>
+				<value>홍삼</value>
+				<value>홍두깨</value>
+			</list>
+		</property>
+		<property name="friend"> <!-- 얘는 list로 받아옴 -->
+			<list>
+				<value>지나짱</value>
+				<value>지나찡</value>	<!-- 이것만 가져올거면 index 쓰면 됨! -->
+			</list>
+		</property>
+		<property name="family"> <!-- 얘는 hashmap으로 받아옴  (map이랑 entry 짝꿍이얌!)-->
+			<map key-type="java.lang.String" value-type="java.lang.Integer">
+				<entry key="아버지" value="70"></entry>
+				<entry key="어머니" value="68"></entry>
+			</map>
+		</property>
+		<property name="pet" ref="d1"></property>	<!-- 강아지 객체 가져오겠다! (ref: 그대로 가져올 때! 참조하겠다!)-->
+	</bean>
+		
+		<bean id="d1" class="com.ddargiratte.jan253.dog.Dog">	<!-- dog만 치고 자동완성! -->
+			<property name="name" value="멍구"></property>
+			<property name="age" value="3"></property>
+		</bean>
+		
+		<bean id="b1" class="com.ddargiratte.jan253.bird.Bird">	<!-- bird만 치고 자동완성! -->
+			<property name="name" value="꾸꾸"></property>
+			<property name="age" value="2"></property>
+		</bean>
+		
+	<context:annotation-config/>
+	<bean id="h2" class="com.ddargiratte.jan253.human.Human">
+		<constructor-arg value="지나"></constructor-arg>
+		<constructor-arg value="24"></constructor-arg>
+		<constructor-arg>
+			<list value-type="java.lang.String">
+				<value>진국</value>
+				<value>brother</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>정헌</value>
+				<value>효섭</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<map key-type="java.lang.String" value-type="java.lang.Integer">
+				<entry key="papa" value="75"></entry>
+				<entry key="mama" value="72"></entry>
+				<entry key="sister" value="45"></entry>
+			</map>
+		</constructor-arg>
+		<constructor-arg ref="d1"></constructor-arg>
+		<constructor-arg ref="b1"></constructor-arg>
+	</bean>
+</beans>
