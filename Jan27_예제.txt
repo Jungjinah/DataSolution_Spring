@@ -1,0 +1,21 @@
+1번째 문제
+[index가 1번째 controller가 2번째 StudentDAO가 3번째-Mapper쓰고
+등록
+-> 웹에 DB에 있는 학생 정보 출력(jstl)
+
+-> (같은 프로젝트 / 다른 패키지)
+-> 시험날짜(select option) /
+	 시험 과목(input) 화면 만들어서
+-> DB에 정보 담고
+-> 웹에 출력
+(자바빈1 / 컨트롤러1 / DAO1 / DBTable1 / Mapper.xml1 / MapperInterface1)
+
+
+2번째 문제
+(새로운 프로젝트에서)
+
+POST방식 써야함
+메뉴명
+가격
+사진 넣어서 버튼 누르면(cos.jar)
+아래에 그 목록들이 생기게!
