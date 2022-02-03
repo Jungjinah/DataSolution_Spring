@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	img {
+		position: fixed;
+		transition: all 0.5s ease-out;
+		border-radius: 10px;
+	}
+	
+	h1 {
+		position: fixed;
+		transition: all 0.5s ease-out;
+		color: yellow;
+		background-color: black;
+	}
+	
+	#t{
+		position: fixed;
+		top: -90px;
+		transition: all 0.5s ease-out;
+	}
+	
+	#t2 {
+		opacity: 0;			/* 투명도만 조절(사라지지는 않아서 메뉴가 눌러짐) */
+		/* display: none; -> 아예 없애기(메뉴 안눌러짐, 애니메이션효과 발생 x)*/
+		positon: fixed;		/**/
+		right: 7px;
+		transition: all 0.5s ease-out;
+	}
+	
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// setInterval : JavaScript의 반복함수
+		//		-> 일정한 시간 간격으로 코드를 반복 실행
+		// setTimenout
+		//		-> 정해진 시간 간격 안에 코드가 한번 실행
+		
+		setInterval(function(){
+			let x = Math.random() * 500;
+			let y = Math.random() * 500;
+			$("img").css("top", y + "px");
+			$("img").css("left", x + "px");
+			$("h1").css("bottom", y + "px");
+			$("h1").css("right", x + "px");
+			
+		}, 1000);
+		
+		let tVisible = false;
+		$("#tHandle").click(function(){
+			if (!tVisible) {
+				$("#t").css("top", "5px");
+			}else {
+				$("#t").css("top", "-82px");
+			}
+			tVisible = !tVisible;
+		});
+		
+		// 메뉴바 활용(투명)
+		$("#t2").mouseenter(function(){
+			$("#t2").css("opacity", "1"); // 투명해진 상태로 나타남
+		});
+		
+		$("#t2").mouseleave(function(){
+			$("#t2").css("opacity", "0"); // 투명도 0으로 안나타남
+		});
+		
+	
+	});
+</script>
+</head>
+<body>
+	<img src="ttvalue.jpg" width="300px" height="300px">
+	<h1>귀여워여~</h1>
+	<table border="1" id="t">
+		<tr>
+			<td><a href="https://www.naver.com">네이버로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.google.com">구글로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.youtube.com">유튜브로</a></td>
+		</tr>
+		<tr>
+			<td id="tHandle">손잡이</td>
+		</tr>
+	</table>
+	
+	<table border="1" id="t2">
+		<tr>
+			<td><a href="https://www.naver.com">네이버로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.google.com">구글로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.youtube.com">유튜브로</a></td>
+		</tr>
+	</table>
+</body>
+</html>
+
+

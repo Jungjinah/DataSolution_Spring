@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script>
+	$(function() {
+		$("td").each(function(index, td) {		//"td" -> ""안에 공통된 부분을 넣어주기!
+			if (index == 0) {
+				$(td).css("color", "green").css("background-color", "red");
+
+			}else if (index == 1) {
+				$(td).css("color", "yellow").css("background-color", "blue");
+			
+			}else {
+				$(td).css("color", "pink").css("background-color", "orange");
+			};
+			
+		});
+		
+	});
+	
+	// 선생님 방식
+	$(function() {
+		let arrobj = [
+						{
+							bgc: "red";
+							color: "green";
+						},
+						{
+							bgc: "blue";
+							color: "yellow";
+						},
+						{
+							bgc: "orange";
+							color: "pink";
+						}
+					];
+		$("td").each(function(i, t) {
+			$(t).css("background-color", arrobgj[i].bgc).css("color", arrobj[i].color);
+		});
+	});
+
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>ㅋㅋㅋㅋㅋㅋ</td>
+		</tr>
+		<tr>
+			<td>ㅎㅎㅎㅎㅎㅎ</td>
+		</tr>
+		<tr>
+			<td>ㅔㅔㅔㅔㅔㅔ</td>
+		</tr>
+	</table>
+</body>
+</html>

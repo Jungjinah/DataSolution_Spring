@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	h1 {
+		color: red;
+		transition: all 0.5s ease-out;
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#b1").click(function() {
+			// h1의 글자색이 초록색으로 -> 배경이 핑크색으로
+			// $(선택자).css("속성명", "값");
+			// 계속적으로 css 엮는 것도 가능 (but, 비추!)
+			$("h1").css("color", "green").css("background-color","pink");			
+		});
+	
+		$("#b2").click(function(){
+			let h1color = $("h1").css("color");
+			alert(h1color);
+		});
+		
+		$("#b3").click(function(){
+			let iVal = $("#i").val();
+			$("h1").css("font-size", iVal + "pt");
+		});
+		
+		$("#b4").click(function(){
+			let iWidth = $("#i").css("width");
+			$("#i").val(iWidth);
+		});
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h1>j쿼리 렉 걸려어어엉</h1>
+	<hr>
+	<button id="b1">b1</button>
+	<button id="b2">b2</button>
+	<hr>
+	<input id="i">
+	<button id="b3">b3</button>
+	<button id="b4">b4</button>
+</body>
+</html>

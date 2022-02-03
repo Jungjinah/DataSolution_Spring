@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 2가지 방법이얌! jQuery 쓰는 방법 -->
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// $(선택자).이벤트(콜백함수);
+	/*
+	$(document).ready(function init() { // 이'(문서).준비' 다 되면 '(자동호출될 함수)';
+		alert("준비완료!");
+	});
+	
+	
+	$(function() {
+		alert("준비완료!");
+	});
+	*/
+	
+
+	// CSS 선택자 이용 / JS 기본 내장 객체
+	
+	// event-driven programming
+	//		callback함수 중심으로 이벤틀르 처리하는 프로그래밍 기법
+	
+	$(function() {
+		let iInput = $("#i");	// i가 ID인것을 가져옴
+		
+		// 이벤트 하나에 함수 여러개를 연결 가능
+		// html안에 있는 모든 <button></button>에
+		// 클릭이벤트가 발생하면 콜백함수가 자동으로 호출되게 연결
+		$("button").click(function(){
+			alert(iInput.val());
+		});
+	
+		$("h1").click(function(){
+			$("h2").click(function(){
+				alert("o0o~");
+			});
+		});
+		
+		let b = false;
+		$("h3").click(function(){
+			b = !b;
+			alert(b);
+		});
+		
+	});		
+	
+</script>
+</head>
+<body>
+	<h1>오늘은 목요일!</h1>
+	<h2>내일은 금요일~</h2>
+	<h3>모레는 토요일~!</h3>
+	<hr>
+	<input id="i">
+	<button>출력</button>
+	<hr>
+	<button>print</button>
+
+</body>
+</html>
