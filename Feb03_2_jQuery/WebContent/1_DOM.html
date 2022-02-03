@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// alert("ddd"); <-확인차 넣어본거얌(이런 과정 중요해요~)
+		$("#b1").click(function() {
+			// alert("성공!");	<-확인차
+			// $("a").text("<b>구글로</b>");	// b1을 클릭한다면 a태그의 글을 바꾸면서 굵게 변경!(but <b>가 텍스트로 인식됨,,)
+			$("a").html("<b>구글로</b>");	// text가 아니라 html로 변경!
+		});
+		
+		$("#b2").click(function() {
+			$("a").attr("href","https://www.google.com");	// attr(attribute(속성)의 줄임말) : href의 속성을 바꾸겠다.
+			$("a").attr("id", "t");
+			$("a").removeAttr("class");	// class를 지우겠다!
+		});
+		
+		let n = 0;
+		$("#b4").click(function() {
+			n++;	
+			// $("CSS선택자") or $(변수명) : 있는것을 선택
+			// $("DOM객체") : DOM객체 생성(ex.marquee)
+			// behavior : 스크롤 방식을 설정
+			//	alternate : 왕복 설정 (behavior안에 속하는 애) - 방향설정(↔) 
+			let m = $("<marquee></marquee>").text("다들 피곤하시죠오옹" + n + "트");
+			m.attr("behavior", "alternate");
+			
+			// $("div").append(m);	-> 숫자 순서가 순방향
+			$("div").prepend(m); //	-> 숫자 순서가 역방향
+		});
+		
+		$("#b3").click(function() {
+			// $("div").remove();	// 전체 없애기(통으로)
+			$("div").empty();	// 내용만 없애기
+		});
+		
+		let i = 0;
+		setInterval(function() {
+			i++;
+			if (i == 10) {
+				i = 1;	// 사진이 9장이라 10이 되었을때 다시 1번으로 되돌리기
+			}
+			$("img").attr("src","rabit" + i + ".PNG");	// src : 이미지 불러올때 쓰는 경로
+		}, 300);	// 300 : 0.3초
+		
+		$("#regBtn").click(function(){
+			// input에 넣은 값을 가져올거얌
+			let m_name = $("#m_name").val();
+			let m_price = $("#m_price").val();
+			
+			// <tr>
+			//		<td>김치볶음밥 </td>
+			//		<td>5000 </td>
+			// </tr>
+			// 이런형태로 넣고싶음!(↑)
+			
+			let td1 = $("<td></td>").text(m_name);
+			let td2 = $("<td></td>").text(m_price);
+			let tr = $("<tr></tr>").append(td1, td2);
+			
+			$("table").append(tr);
+			
+			$("#m_name").val("");
+			$("#m_price").val("");
+			
+			
+		});
+		
+	});
+</script>
+
+<style type="text/css">
+#t {
+	background-color: pink;
+	color: white;
+}
+
+div {
+	border: pink solid 3px;
+	width: 300px;
+	height: 300px;
+}
+
+.t2 {
+	font-size: 30pt;
+}
+</style>
+</head>
+<body>
+	메뉴 : <input id="m_name"><p>
+	가격 : <input id="m_price"><p>
+	<button id="regBtn">등록</button>
+	<hr>
+	<table border="1">
+		<tr>
+			<th>메뉴명</th>
+			<th>가격</th>
+		</tr>
+	</table>
+	<hr>
+	<img>
+	<hr>
+	<a href="https://www.naver.com" class="t2">네이버로</a>
+	<hr>
+	<button id="b1">내용 수정</button>	<br>
+	<button id="b2">속성 수정</button>	<br>
+	<button id="b3">DOM객체 삭제</button>	<br>
+	<button id="b4">DOM객체 수정</button>	<br>
+	<div></div>
+</body>
+</html>
