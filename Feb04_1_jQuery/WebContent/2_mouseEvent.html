@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		border: red solid 3px;
+		width: 200px;
+		height: 200px;
+	}
+	
+	img {
+		position: fixed;
+	}
+
+	table {
+		position: fixed;
+		opacity: 0;
+		top: -100px;
+		left: -100px;
+		transition: opacity 0.3s ease-in;
+	}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//alert("연결");
+		$("div").mousedown(function(){
+			$("h1").text("mousedown");
+		});
+		
+		$("div").mouseup(function() {
+			$("h1").text("mouseup");
+		});
+		$("div").mouseenter(function() {
+			$("h1").text("mouseenter");
+		});
+		
+		// DOM객체의 정확한 좌표를 알고 싶을때!
+		let divX = $("div").offset().left;	// 선택자의 정확한 X좌표를 알려줌
+		let divY = $("div").offset().top;	// 선택자의 정확한 Y좌표를 알려줌
+	/*	alert(divX);
+		alert(divY); */
+		
+		$("div").mousemove(function(e) {
+			// html페이지에서의 마우스 좌표를 표시
+			$("h2").text("mousemove : " + e.pageX + e.pageY);
+		
+			// div기준에서의 정확한 좌표
+			let x = e.pageX - divX;
+			let y = e.pageY - divY;
+			$("h2").text("정확한좌표 : " + x + ", " + y);
+		});
+		
+		$("div").mouseleave(function() {
+			$("h1").text("mouseleave");
+		});
+		
+		$("html").mousemove(function(e) {		// 마우스 커서 옆에 붙게해서 마우스기능해주게!
+			$("img").css("left", (e.pageX + 1) + "px");
+			$("img").css("top", (e.pageY + 1) + "px");
+		});
+		
+		// 마우스 우클리했을때 나오는 기본 내장 메뉴 안나오게
+		$(document).contextmenu(function() {
+			return false;
+		});
+		
+		$("html").mousedown(function(e) {	// 어떤 상황에서든지 mousedown이 발동하면
+			if (e.button == 2) {	// 오른쪽 마우스 버튼 : e.button == 2
+				$("table").css("opacity", "1");	// 투명도 살리기
+				$("table").css("left", e.pageX + "px");
+				$("table").css("top", e.pageY + "px"); 
+			}
+			setTimeout(function() {	// 메뉴가 나오고 3초 뒤에
+				$("table").css("opacity", "0");	// 투명도 애니메이션이 걸리게
+				setTimeout(function() {	// 0.3초 뒤에 table이 원위치로 
+					$("table").css("left", "-100px");
+					$("table").css("top", "-100px");	
+				}, 300);
+			}, 3000);
+		});
+	
+	});
+
+</script>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td><a href="https://www.naver.com">네이버로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.youtube.com">유튜브로</a></td>
+		</tr>
+		<tr>
+			<td><a href="https://www.google.com">구글로</a></td>
+		</tr>
+	</table>
+	<img src="earzar2.gif" width="200px" height="100px">
+	<div></div>
+	<h1></h1>
+	<h2></h2>
+</body>
+</html>

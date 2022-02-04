@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//alert("연결성공!");
+		/*$("input").keydown(function(){		// keydown: 키보드에서 손을 델 때
+			//alert("띠용?");
+			$("h1").text("키보드 누르는 동안");
+			
+			return false;	// 기능 발동 전에 원래 기능을 못하도록 막을 수 있다!
+							// 타자치고 있는데 글자가 보이지 않음
+		});*/
+		
+		// 이벤트에 연결되는 콜백함수의 첫번째 파라미터로 이벤트 객체가 들어가 있는 상황!
+		//	(발생한 이벤트의 정보가 들어있음)
+		$("input").keydown(function(e) {	// 콜백함수의 파라미터로 뭔가를 넣음!(e)
+			$("h1").text(e.keyCode);	// 아스키코드 값 : 모든 키에는 고유한 값이 존재
+			
+			// 특정한 키를 눌렀을 때 뭔가 하고 싶으면 
+			if (e.keyCode == 13) {
+				alert("십삼이야!!!!");	// enter(13)키!
+				
+			}else if (e.keyCode == 65) {
+				return false;	// a(65)키 사용하지 못하도록 막은  상황!
+			}else if (e.keyCode == 83) {
+				let t = $("input").val();	// input에 들어가는 내용을 t변수에 담고
+				$("input").val(t + "ㅋ");	// s(83) 키를 눌렀을때 ㅋ이 들어가게!
+				return false;				// s키의 원래기능을 못하도록 (그럼 s는 안나오고 ㅋ만 나옴!)
+			}
+		});
+		
+		$("input").keyup(function(e){		// keyup: 키보드에서 손을 뗄 때
+			$("h1").text("키보드에서 손 떼기");
+		});
+		
+		let l = 0;
+		$("html").keydown(function(e){
+			//alert("저녁은 뭐먹찡");
+			/*if (e.keyCode == 116) {		// 새로고침(116)!
+				alert("ㅋㅋㅋㅋㅋ");
+				return false;			// 새로고침이 안되는 상황!
+			}*/
+		
+			if (e.keyCode == 39) {		// 오른쪽 방향키(39)
+				l += 5;
+				$("h2").css("left", l + "px");	// 오른쪽 방향키 누르면 왼쪽으로 픽셀 늘어나겡
+			}
+		
+		});
+	});
+	
+	
+
+</script>
+<style type="text/css">
+	h2 {
+		position : fixed;
+	}
+</style>
+</head>
+<body>
+	<h2>금요일!!</h2>
+	<input>
+	<h1></h1>
+</body>
+</html>
